@@ -39,20 +39,28 @@ fun BusinessCardScreen() {
             .fillMaxSize()
             .background(Color(0xFFDDEEDD))
             .padding(16.dp),
-        verticalArrangement = Arrangement.SpaceBetween, // Распределение между блоками
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Логотип и имя в центре
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.weight(1f)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.android_logo),
-                contentDescription = "Android Logo",
-                modifier = Modifier.size(100.dp)
-            )
+            // Добавляем Box с фоном
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(120.dp)
+                    .background(Color(0xFF073042))
+                    .padding(10.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.android_logo),
+                    contentDescription = "Android Logo",
+                    modifier = Modifier.size(100.dp) // Размер самого логотипа
+                )
+            }
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Глазырин Дмитрий",
@@ -67,7 +75,6 @@ fun BusinessCardScreen() {
             )
         }
 
-        // Контактная информация 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(bottom = 32.dp)
@@ -78,6 +85,7 @@ fun BusinessCardScreen() {
         }
     }
 }
+
 
 @Composable
 fun ContactInfo(icon: Int, text: String) {
